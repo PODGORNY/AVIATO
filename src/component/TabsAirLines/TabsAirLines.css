@@ -1,0 +1,36 @@
+.tabsAirLines {
+  display: flex;
+  width: 504px;
+}
+
+button {
+  border: none;
+  outline: none;
+  color: #dfe5ec;
+}
+
+.itemTabs {
+  width: 168px;
+  height: 50px;
+  color: #4a4a4a;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.itemTabs:hover {
+  cursor: url(../image/Cursor.png), auto;
+  color: #fff;
+}
+
+.active {
+  color: #2196f3;
+}
+
+.itemTabs.active {
+  color: #ffffff;
+}
