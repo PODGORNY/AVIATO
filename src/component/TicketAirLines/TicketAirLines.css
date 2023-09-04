@@ -13,14 +13,14 @@
   height: 55px;
 }
 
-.titleCards {
+.titleTicket {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.priceCards {
+.priceTicket {
   width: 147px;
   color: var(--primary-colors-primary-500, #2196f3);
   font-family: Open Sans;
