@@ -26,11 +26,11 @@ button {
   cursor: url(../image/Cursor.png), auto;
   color: #fff;
 }
-
+/*
 .active {
   color: #2196f3;
 }
-
+*/
 .itemTabs.active {
   color: #ffffff;
 }

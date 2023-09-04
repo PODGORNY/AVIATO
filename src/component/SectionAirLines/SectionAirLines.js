@@ -3,6 +3,7 @@ import './SectionAirLines.css';
 
 import { TabsAirLines } from '../TabsAirLines/TabsAirLines';
 import { TicketAirLines } from '../TicketAirLines/TicketAirLines';
+
 export const SectionAirLines = () => {
   return (
     <section className="sectionAirLines">
