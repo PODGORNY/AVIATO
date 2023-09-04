@@ -4,16 +4,22 @@ export const TicketBack = () => {
   return (
     <div className="ticketBack">
       <div className="itemTicket">
-        <div className="itemTitleTicket">BRL - SNT</div>
-        <div className="itemValueTicket">14:40 - 12:10</div>
+        <div className="itemTitleTicket">{`${originBack} – ${destinationBack}`}</div>
+        <div className="itemValueTicket">{`${takeOffTimeBack} - ${landingTameBack}`}</div>
       </div>
       <div className="itemTicket">
         <div className="itemTitleTicket">В пути</div>
-        <div className="itemValueTicket">10ч 00м</div>
+        <div className="itemValueTicket">{durationBack}</div>
       </div>
       <div className="itemTicket">
-        <div className="itemTitleTicket">2 пересадки</div>
-        <div className="itemValueTicket">FRN</div>
+        <div className="itemTitleTicket">
+          {!stopsBack.length
+            ? 'Без пересадок'
+            : `${stopsBack.length} пересадки` && stopsBack.length === 1
+            ? `${stopsBack.length} пересадка`
+            : `${stopsBack.length} пересадки`}
+        </div>
+        <div className="itemValueTicket">{`${stopsBack}`}</div>
       </div>
     </div>
   );

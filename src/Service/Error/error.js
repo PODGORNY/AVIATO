@@ -1,5 +1,6 @@
 import React from 'react';
 import { Alert, Space } from 'antd';
+
 export const Error = ({ text }) => (
   <Space
     direction="vertical"

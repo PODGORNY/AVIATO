@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { toggleFilter, setAllFilters, clearAllFilters } from '../../Action/checkbox-actions';
 
-import classes from './SectionFilter.module.css';
+import classes from './Filter.module.css';
 
-export const SectionFilter = () => {
+export const Filter = () => {
   const { sectionFilter, 'title-filter': titleFilter, sectionFilterItem, check, checkBox, checkInput, name } = classes;
 
   // отправка события(Action) в стор - чтобы указать редусу Что изменить

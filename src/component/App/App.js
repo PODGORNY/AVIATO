@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux';
 
 import getSessionID from '../../Action/ticket-actions';
 import { Header } from '../Header/Header';
-import { SectionFilter } from '../SectionFilter/SectionFilter';
-import { SectionAirLines } from '../SectionAirLines/SectionAirLines';
+import { Filter } from '../Filter/Filter';
+import { TabsAirLines } from '../TabsAirLines/TabsAirLines';
+import { ListAirLines } from '../ListAirLines/ListAirLines';
 
 import './App.css';
 
@@ -17,8 +18,11 @@ export const App = () => {
     <div>
       <Header />
       <div className="main">
-        <SectionFilter />
-        <SectionAirLines />
+        <Filter />
+        <div className="AirLines">
+          <TabsAirLines />
+          <ListAirLines />
+        </div>
       </div>
     </div>
   );
