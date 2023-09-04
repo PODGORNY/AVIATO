@@ -5,7 +5,7 @@ import getSessionID from '../../Action/ticket-actions';
 import { Header } from '../Header/Header';
 import { Filter } from '../Filter/Filter';
 import { TabsAirLines } from '../TabsAirLines/TabsAirLines';
-import { ListAirLines } from '../ListAirLines/ListAirLines';
+import { ListTicketAirLines } from '../ListTicketAirLines/ListTicketAirLines';
 
 import './App.css';
 
@@ -21,7 +21,7 @@ export const App = () => {
         <Filter />
         <div className="AirLines">
           <TabsAirLines />
-          <ListAirLines />
+          <ListTicketAirLines />
         </div>
       </div>
     </div>

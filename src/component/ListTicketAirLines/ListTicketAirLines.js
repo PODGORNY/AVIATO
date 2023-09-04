@@ -8,7 +8,7 @@ import Loader from '../../Service/Loader/Loader';
 import { Warning } from '../../Service/Warning/Warning';
 import { Error } from '../../Service/Error/Error';
 
-export const ListAirLines = () => {
+export const ListTicketAirLines = () => {
   let id = 1;
   const tickets = useSelector((state) => state.ticketReducer.tickets);
   const error = useSelector((state) => state.ticketReducer.error);
