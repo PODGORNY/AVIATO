@@ -1,3 +1,5 @@
+// REDUCE - функция, которая получает Action(объект где написано Что обновить) и обновляет State
+//1 пришёл Action - событие
 import {
   FETCH_SEARCH_ID_REQUEST,
   FETCH_SEARCH_ID_SUCCESS,
@@ -7,9 +9,11 @@ import {
   FETCH_TICKETS_FAILURE,
   SET_STOP_FETCHING,
 } from '../Action/ticket-actions';
+// экшн изменения фильтров и сортировки
 import { TOGGLE_FILTER, SET_ALL_FILTERS, CLEAR_ALL_FILTERS } from '../Action/checkbox-actions';
 import { SET_SORTING } from '../Action/sorting-actions';
 
+//3 Action указывает Reduce что изменить в State
 const initialState = {
   searchId: null,
   tickets: [],
@@ -19,14 +23,15 @@ const initialState = {
   stop: false,
   filters: {
     all: true,
-    withoutStops: true,
+    withoutStop: true,
     oneStop: true,
-    twoStops: true,
-    threeStops: true,
+    twoStop: true,
+    threeStop: true,
   },
   sorting: 'cheapest',
 };
 
+//2 когда Action указал ЧТО изменить - Reducer решает КАК...это просто логика, отвечающая за обновления, собраная из компонентов в одном месте
 export const ticketReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SEARCH_ID_REQUEST:
@@ -56,7 +61,7 @@ export const ticketReducer = (state = initialState, action) => {
     case SET_ALL_FILTERS:
       return {
         ...state,
-        filters: { ...state.filters, all: true, withoutStops: true, oneStop: true, twoStops: true, threeStops: true },
+        filters: { ...state.filters, all: true, withoutStop: true, oneStop: true, twoStop: true, threeStop: true },
       };
     case CLEAR_ALL_FILTERS:
       return {
@@ -64,10 +69,10 @@ export const ticketReducer = (state = initialState, action) => {
         filters: {
           ...state.filters,
           all: false,
-          withoutStops: false,
+          withoutStop: false,
           oneStop: false,
-          twoStops: false,
-          threeStops: false,
+          twoStop: false,
+          threeStop: false,
         },
       };
     case SET_SORTING:

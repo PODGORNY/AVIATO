@@ -17,7 +17,7 @@ export const Filter = () => {
   const onCheked = (filter) => {
     if (filter === 'all') {
       if (!filters.all) {
-        // отправка action
+        // отправка action - изменения состояния
         dispatch(setAllFilters());
       } else {
         dispatch(clearAllFilters());
