@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { TicketAirLines } from '../TicketAirLines/TicketAirLines';
 import { Button } from '../ButtonAdd/ButtonAdd';
 //сервисные элементы
-//import { Loader } from '../../Service/Loader/Loader';
+import { Loader } from '../../Service/Loader/Loader';
 import { Warning } from '../../Service/Warning/Warning';
 
 export const ListTicketAirLines = () => {
@@ -131,7 +131,7 @@ export const ListTicketAirLines = () => {
   if (!stop) {
     return (
       <>
-        {/*<Loader />*/}
+        <Loader />
         {components}
         {!components.length ? null : <Button onClick={showMoreTickets} />}
       </>
