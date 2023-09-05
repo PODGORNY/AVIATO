@@ -122,7 +122,6 @@ export const ListTicketAirLines = () => {
   if (error !== null && !stop) {
     return (
       <>
-        <Error text={'Retry your search for the full list of available tickets'} />
         {!components.length ? <Warning text={'Nothing found, try to change the search settings'} /> : components}
         {!components.length ? null : <Button onClick={showMoreTickets} />}
       </>
