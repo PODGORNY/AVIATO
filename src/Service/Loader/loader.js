@@ -1,5 +1,17 @@
 import React from 'react';
 import { Spin } from 'antd';
+import './Loader.css';
 
-const Loader = () => <Spin style={{ marginLeft: '50%', marginBottom: 20 }} />;
+const Loader = () => {
+  return (
+    <div className="loaderList">
+      <div className="loader"></div>
+      <div className="loader"></div>
+      <div className="loader"></div>
+      <div className="loader"></div>
+      <div className="loader"></div>
+    </div>
+  );
+};
+
 export default Loader;

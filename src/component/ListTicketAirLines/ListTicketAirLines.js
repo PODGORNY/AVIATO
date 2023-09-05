@@ -6,7 +6,6 @@ import { Button } from '../ButtonAdd/ButtonAdd';
 //сервисные элементы
 import Loader from '../../Service/Loader/Loader';
 import { Warning } from '../../Service/Warning/Warning';
-import { Error } from '../../Service/Error/Error';
 
 export const ListTicketAirLines = () => {
   let id = 1;
