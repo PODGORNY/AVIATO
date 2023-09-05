@@ -31,20 +31,20 @@ export const TicketAirLines = ({
         <img className={logoAir} src={`http://pics.avs.io/99/36/${codeIATA}.png`} alt="logo"></img>
       </div>
       <TicketIn
-        originBack={originBack}
-        destinationBack={destinationBack}
-        durationBack={durationBack}
-        stopsBack={stopsBack}
-        takeOffTimeBack={takeOffTimeBack}
-        landingTameBack={landingTameBack}
-      />
-      <TicketBack
         originIn={originIn}
         destinationIn={destinationIn}
         durationIn={durationIn}
         stopsIn={stopsIn}
         takeOffTimeIn={takeOffTimeIn}
         landingTameIn={landingTameIn}
+      />
+      <TicketBack
+        originBack={originBack}
+        destinationBack={destinationBack}
+        durationBack={durationBack}
+        stopsBack={stopsBack}
+        takeOffTimeBack={takeOffTimeBack}
+        landingTameBack={landingTameBack}
       />
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import './TicketIn.css';
 
-export const TicketIn = ({ originIn, destinationIn, durationIn, stopsIn, takeOffTimeIn, landingTameIn }) => {
+export const TicketIn = ({ originIn, destinationIn, durationIn, takeOffTimeIn, landingTameIn, stopsIn }) => {
   return (
     <div className="ticketIn">
       <div className="itemTicket">

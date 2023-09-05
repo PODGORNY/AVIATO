@@ -15,39 +15,15 @@ export const ListTicketAirLines = () => {
   const filters = useSelector((state) => state.ticketReducer.filters);
   const sorting = useSelector((state) => state.ticketReducer.sorting);
   const stop = useSelector((state) => state.ticketReducer.stop);
-  //показать 5 билетов по кнопке
+  // показано 5 билетов
   const [ticketsToShow, setTicketsToShow] = useState(5);
 
-  const filterTickets = tickets.filter((elem) => {
-    if (filters.all) {
-      return true;
-    }
-    const stopsCount = elem.segments[0].stops.length;
-
-    return (
-      (filters.withoutStop && stopsCount === 0) ||
-      (filters.oneStop && stopsCount === 1) ||
-      (filters.twoStop && stopsCount === 2) ||
-      (filters.threeStop && stopsCount === 3)
-    );
-  });
-
-  const filterAndSortTickets = filterTickets.sort((a, b) => {
-    if (sorting === 'cheapest') {
-      return a.price - b.price;
-    } else if (sorting === 'fastest') {
-      return a.segments[0].duration - b.segments[0].duration;
-    } else {
-      return 0;
-    }
-  });
-
-  const visibleTickets = filterAndSortTickets.slice(0, ticketsToShow);
-
+  // функция показать ещё 5 билетов
   const showMoreTickets = () => {
     setTicketsToShow(ticketsToShow + 5);
   };
 
+  // формат цены-------------------------------------------------------------------------цена и время билета
   const formatPrice = (price) => {
     return price.toLocaleString('ru-RU');
   };
@@ -69,7 +45,40 @@ export const ListTicketAirLines = () => {
     return landing.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
   };
 
+  // фильтр билетов...по количеству пересадок--------------------------------------------1 фильтр и сортировка билетов
+  const filterTickets = tickets.filter((elem) => {
+    if (filters.all) {
+      return true;
+    }
+    const stopsCount = elem.segments[0].stops.length;
+
+    return (
+      (filters.withoutStop && stopsCount === 0) ||
+      (filters.oneStop && stopsCount === 1) ||
+      (filters.twoStop && stopsCount === 2) ||
+      (filters.threeStop && stopsCount === 3)
+    );
+  });
+
+  // сортировка билетов...дешёвый, быстрый, оптимальный
+  const filterAndSortTickets = filterTickets.sort((a, b) => {
+    if (sorting === 'cheapest') {
+      return a.price - b.price;
+    } else if (sorting === 'fastest') {
+      return a.segments[0].duration - b.segments[0].duration;
+    } else {
+      return 0;
+    }
+  });
+
+  // -----------------------------------------------------------------------------------1.1 собрать фильтрованное и показать билеты
+  // отфильтрованное и сортированное - собрать в массив...первые 5 элементов
+  const visibleTickets = filterAndSortTickets.slice(0, ticketsToShow);
+
+  // из этих 5 - получить свойства, пройдя по массиву...как в movieapp
   const components = visibleTickets.map((item) => {
+    // получение свойств из билетов в API
+    // цена, код авиакомпании, массив перелётов
     const { price, carrier, segments } = item;
     const {
       origin: originIn,
@@ -87,6 +96,7 @@ export const ListTicketAirLines = () => {
     } = segments[1];
 
     return (
+      // выдать в рендер билет из массива...5 шт
       <TicketAirLines
         priceValue={formatPrice(price)}
         codeIATA={carrier}
@@ -107,7 +117,7 @@ export const ListTicketAirLines = () => {
     );
   });
 
-  // сервисные элементы
+  // ------------------------------------------------------------------------------------------сервисные элементы
   // ошибка / лоадер / кнопка +5
   if (error !== null && !stop) {
     return (

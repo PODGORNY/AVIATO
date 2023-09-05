@@ -1,6 +1,13 @@
 import React from 'react';
 import './TicketBack.css';
-export const TicketBack = () => {
+export const TicketBack = ({
+  originBack,
+  destinationBack,
+  takeOffTimeBack,
+  landingTameBack,
+  durationBack,
+  stopsBack,
+}) => {
   return (
     <div className="ticketBack">
       <div className="itemTicket">
