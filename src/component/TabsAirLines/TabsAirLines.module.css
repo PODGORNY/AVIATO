@@ -1,12 +1,22 @@
+button {
+  background: white;
+  color: #fff;
+  user-select: none;
+  border: none;
+  outline: none;
+}
+
 .tabsAirLines {
   display: flex;
   width: 504px;
 }
 
-button {
-  border: none;
-  outline: none;
-  color: #dfe5ec;
+.tabsAirLines button:first-child {
+  border-radius: 7px 0 0 7px;
+}
+
+.tabsAirLines button:last-child {
+  border-radius: 0 7px 7px 0;
 }
 
 .itemTabs {
@@ -24,13 +34,16 @@ button {
 
 .itemTabs:hover {
   cursor: url(../image/Cursor.png), auto;
-  color: #fff;
 }
-/*
-.active {
-  color: #2196f3;
-}
-*/
-.itemTabs.active {
-  color: #ffffff;
+
+.itemTabs:active,
+.itemTabs:focus {
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  word-wrap: break-word;
+  background: #2196f3;
 }
