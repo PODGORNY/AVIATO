@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { TicketBack } from '../TicketBack/TicketBack';
 import { TicketIn } from '../TicketIn/TicketIn';
+import { TicketBack } from '../TicketBack/TicketBack';
 
 import classes from './TicketAirLines.module.css';
 
@@ -22,13 +22,13 @@ export const TicketAirLines = ({
   takeOffTimeBack,
   landingTameBack,
 }) => {
-  const { ticketAirLines, titleTicket, priceTicket } = classes;
+  const { ticketAirLines, titleTicket, priceTicket, logoAir } = classes;
 
   return (
     <div className={ticketAirLines}>
       <div className={titleTicket}>
         <div className={priceTicket}>{priceValue}</div>
-        <img className="logoAir" src={`http://pics.avs.io/99/36/${codeIATA}.png`} alt="logo"></img>
+        <img className={logoAir} src={`http://pics.avs.io/99/36/${codeIATA}.png`} alt="logo"></img>
       </div>
       <TicketIn
         originBack={originBack}

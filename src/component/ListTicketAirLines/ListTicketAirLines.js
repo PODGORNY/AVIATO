@@ -25,10 +25,10 @@ export const ListTicketAirLines = () => {
     const stopsCount = elem.segments[0].stops.length;
 
     return (
-      (filters.withoutStops && stopsCount === 0) ||
+      (filters.withoutStop && stopsCount === 0) ||
       (filters.oneStop && stopsCount === 1) ||
-      (filters.twoStops && stopsCount === 2) ||
-      (filters.threeStops && stopsCount === 3)
+      (filters.twoStop && stopsCount === 2) ||
+      (filters.threeStop && stopsCount === 3)
     );
   });
 
@@ -108,7 +108,7 @@ export const ListTicketAirLines = () => {
   });
 
   // сервисные элементы
-  // ошибки / лоадер / кнопка +5
+  // ошибка / лоадер / кнопка +5
   if (error !== null && !stop) {
     return (
       <>
