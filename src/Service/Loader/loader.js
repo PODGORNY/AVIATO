@@ -1,8 +1,7 @@
 import React from 'react';
-import { Spin } from 'antd';
 import './Loader.css';
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <div className="loaderList">
       <div className="loader"></div>
@@ -13,5 +12,3 @@ const Loader = () => {
     </div>
   );
 };
-
-export default Loader;
