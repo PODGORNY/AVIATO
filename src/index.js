@@ -19,12 +19,7 @@ const rootReducer = combineReducers({
   ticketReducer,
 });
 
-const loggerMiddleware = (next) => (action) => {
-  const result = next(action);
-  return result;
-};
-
-export const store = createStore(rootReducer, applyMiddleware(loggerMiddleware, reduxThunk));
+export const store = createStore(rootReducer, applyMiddleware(reduxThunk));
 
 // получаю элемент разметки и гружу приложение в него
 const domNode = document.getElementById('root');
