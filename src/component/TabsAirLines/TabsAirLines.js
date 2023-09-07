@@ -27,7 +27,7 @@ export const TabsAirLines = () => {
     <div className={tabsAirLines}>
       <button
         className={sorting === 'cheapest' ? `${itemTabs} ${active}` : `${itemTabs}`}
-        onClick={() => changeTab('cheapest')} //отправлю новое значение в свойство sorting в редукторе
+        onClick={() => changeTab('cheapest')} //отправлю новое значение обновить свойство sorting в редукторе
       >
         Самый дешевый
       </button>
