@@ -37,7 +37,8 @@ button {
 }
 
 .itemTabs:active,
-.itemTabs:focus {
+.itemTabs:focus,
+.itemTabs.active {
   text-align: center;
   color: white;
   font-weight: 600;
