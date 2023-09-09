@@ -7,7 +7,6 @@ import {
   FETCH_TICKETS_FAILURE,
   SET_STOP_FETCHING,
 } from '../Action/ticket-actions';
-
 const initialState = {
   searchId: null,
   tickets: [],
