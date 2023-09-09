@@ -13,11 +13,15 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 // Reducer - логика обновления Стор
-import { ticketReducer } from './Reducer/get-ticket-reducer';
+import { ticketAPIReducer } from './Reducer/ticketAPIReducer';
+import { filterReducer } from './Reducer/filterReducer';
+import { sortReducer } from './Reducer/sortReducer';
 import { App } from './component/App/App';
 
 const rootReducer = combineReducers({
-  ticketReducer,
+  ticketAPIReducer,
+  filterReducer,
+  sortReducer,
 });
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(reduxThunk)));
