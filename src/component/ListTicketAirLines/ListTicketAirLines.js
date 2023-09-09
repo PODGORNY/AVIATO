@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useId } from 'react';
 import { useSelector } from 'react-redux';
 
 import { TicketAirLines } from '../TicketAirLines/TicketAirLines';
@@ -8,7 +8,7 @@ import { Loader } from '../Loader/Loader';
 import { Warning } from '../../Service/Warning/Warning';
 
 export const ListTicketAirLines = () => {
-  let id = 1;
+  let saveId = useId();
   // получение состояний из reduce
   const tickets = useSelector((state) => state.ticketReducer.tickets);
   const error = useSelector((state) => state.ticketReducer.error);
@@ -100,7 +100,7 @@ export const ListTicketAirLines = () => {
       <TicketAirLines
         priceValue={formatPrice(price)}
         codeIATA={carrier}
-        key={id++}
+        key={saveId} //ticket.id - нужен генератор id если id с билетом не пришёл с сервера
         originIn={originIn}
         destinationIn={destinationIn}
         durationIn={formatDuration(durationIn)}

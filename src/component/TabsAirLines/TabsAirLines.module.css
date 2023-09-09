@@ -33,7 +33,7 @@ button {
 }
 
 .itemTabs:hover {
-  cursor: url(../image/Cursor.png), auto;
+  cursor: url(../../image/Cursor.png), auto;
 }
 
 .itemTabs:active,

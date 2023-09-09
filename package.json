@@ -14,6 +14,7 @@
     "react-redux": "8.1.2",
     "react-scripts": "5.0.1",
     "redux": "4.2.1",
+    "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "2.4.2",
     "save-dev": "0.0.1-security",
     "web-vitals": "^2.1.4"
@@ -49,6 +50,7 @@
     "@babel/core": "^7.21.4",
     "@babel/eslint-parser": "^7.22.9",
     "@babel/preset-react": "^7.22.5",
+    "antd": "^5.8.6",
     "eslint": "^8.38.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
@@ -60,8 +62,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.2.1",
-    "prettier": "^2.8.7",
-    "antd": "^5.8.6"
+    "prettier": "^2.8.7"
   },
   "husky": {
     "hooks": {
