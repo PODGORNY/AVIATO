@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import uniqid from 'uniqid';
 
 import { TicketAirLines } from '../TicketAirLines/TicketAirLines';
 import { Button } from '../ButtonAdd/ButtonAdd';
