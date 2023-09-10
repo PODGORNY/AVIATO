@@ -127,7 +127,7 @@ export const ListTicketAirLines = () => {
   if (error !== null && !stop) {
     return (
       <>
-        {!components.length ? <Warning text={'Please, look for tickets to << Peggie the piper.com >>'} /> : components}
+        {!components.length ? <Warning text={'Рейсов, подходящих под заданные фильтры, не найдено'} /> : components}
         {!components.length ? null : <Button onClick={showMoreTickets} />}
       </>
     );
