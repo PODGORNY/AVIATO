@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import uniqid from 'uniqid';
 
 import { TicketAirLines } from '../TicketAirLines/TicketAirLines';
 import { Button } from '../ButtonAdd/ButtonAdd';
@@ -8,8 +9,6 @@ import { Loader } from '../Loader/Loader';
 import { Warning } from '../../Service/Warning/Warning';
 
 export const ListTicketAirLines = () => {
-  let saveId = 1;
-
   // получение состояний из reduce
   const tickets = useSelector((state) => state.ticketAPIReducer.tickets);
   const error = useSelector((state) => state.ticketAPIReducer.error);
@@ -47,7 +46,13 @@ export const ListTicketAirLines = () => {
   };
 
   // фильтр билетов...по количеству пересадок--------------------------------------------1 фильтр и сортировка билетов
-  const filterTickets = tickets.filter((elem) => {
+  // добавлю элементам массива id для
+  const newTickets = tickets.map((item) => ({
+    ...item,
+    id: uniqid(),
+  }));
+  console.log(newTickets);
+  const filterTickets = newTickets.filter((elem) => {
     if (filters.all) {
       return true;
     }
@@ -80,7 +85,7 @@ export const ListTicketAirLines = () => {
   const components = visibleTickets.map((item) => {
     // получение свойств из билетов в API
     // цена, код авиакомпании, массив перелётов
-    const { price, carrier, segments } = item;
+    const { price, carrier, segments, id } = item;
     const {
       origin: originIn,
       destination: destinationIn,
@@ -101,7 +106,7 @@ export const ListTicketAirLines = () => {
       <TicketAirLines
         priceValue={formatPrice(price)}
         codeIATA={carrier}
-        key={saveId++}
+        key={id}
         originIn={originIn}
         destinationIn={destinationIn}
         durationIn={formatDuration(durationIn)}
