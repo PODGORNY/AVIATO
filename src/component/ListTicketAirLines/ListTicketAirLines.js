@@ -46,12 +46,12 @@ export const ListTicketAirLines = () => {
   };
 
   // фильтр билетов...по количеству пересадок--------------------------------------------1 фильтр и сортировка билетов
-  // добавлю элементам массива id для
+  // добавлю элементам массива id по уникальному сочетанию контенту
   const newTickets = tickets.map((item) => ({
     ...item,
-    id: uniqid(),
+    id: `${item.price}${item.carrier}${item.segments[0].date}`,
   }));
-  console.log(newTickets);
+
   const filterTickets = newTickets.filter((elem) => {
     if (filters.all) {
       return true;
