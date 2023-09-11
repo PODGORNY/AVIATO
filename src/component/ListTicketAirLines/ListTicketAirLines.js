@@ -22,7 +22,7 @@ export const ListTicketAirLines = () => {
     setTicketsToShow(ticketsToShow + 5);
   };
 
-  // формат цены-------------------------------------------------------------------------цена и время билета
+  // формат цены------------------------------------------------цена и время билета...раскладываю время в нужный формат
   const formatPrice = (price) => {
     return price.toLocaleString('ru-RU');
   };
@@ -51,11 +51,11 @@ export const ListTicketAirLines = () => {
     id: `${item.price}${item.carrier}${item.segments[0].date}`,
   }));
 
-  const filterTickets = newTickets.filter((elem) => {
+  const filterTickets = newTickets.filter((item) => {
     if (filters.all) {
       return true;
     }
-    const stopsCount = elem.segments[0].stops.length;
+    const stopsCount = item.segments[0].stops.length;
 
     return (
       (filters.withoutStop && stopsCount === 0) ||
