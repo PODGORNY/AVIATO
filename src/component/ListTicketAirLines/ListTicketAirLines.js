@@ -45,13 +45,7 @@ export const ListTicketAirLines = () => {
   };
 
   // фильтр билетов...по количеству пересадок--------------------------------------------1 фильтр и сортировка билетов
-  // добавлю элементам массива id по уникальному сочетанию контенту
-  const newTickets = tickets.map((item) => ({
-    ...item,
-    id: `${item.price}${item.carrier}${item.segments[0].date}`,
-  }));
-
-  const filterTickets = newTickets.filter((item) => {
+  const filterTickets = tickets.filter((item) => {
     if (filters.all) {
       return true;
     }
@@ -84,7 +78,7 @@ export const ListTicketAirLines = () => {
   const components = visibleTickets.map((item) => {
     // получение свойств из билетов в API
     // цена, код авиакомпании, массив перелётов
-    const { price, carrier, segments, id } = item;
+    const { price, carrier, segments } = item;
     const {
       origin: originIn,
       destination: destinationIn,
@@ -105,7 +99,7 @@ export const ListTicketAirLines = () => {
       <TicketAirLines
         priceValue={formatPrice(price)}
         codeIATA={carrier}
-        key={id}
+        key={`${item.price}${item.carrier}${item.segments[0].date}`} // id по уникальному сочетанию контенту
         originIn={originIn}
         destinationIn={destinationIn}
         durationIn={formatDuration(durationIn)}
