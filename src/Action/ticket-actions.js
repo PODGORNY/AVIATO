@@ -50,12 +50,16 @@ export const fetchTickets = (searchId) => {
           const tickets = data.tickets; // разложил билеты...распаковал массив
           dispatch({ type: FETCH_TICKETS_SUCCESS, payload: tickets }); // отправил в store...reducer
 
-          if (!data.stop) {
-            fetchMoreTickets();
-          } else dispatch({ type: SET_STOP_FETCHING, payload: data.stop });
+          if (data.stop) {
+            dispatch({ type: SET_STOP_FETCHING, payload: data.stop });
+          } else fetchMoreTickets();
         })
         .catch((error) => {
-          dispatch({ type: FETCH_TICKETS_FAILURE, payload: error.message });
+          if (error.message >= 500 && error.message < 600) {
+            fetchMoreTickets();
+          } else {
+            dispatch({ type: FETCH_TICKETS_FAILURE, payload: error.message });
+          }
         });
     };
 

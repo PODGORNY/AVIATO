@@ -3,6 +3,7 @@ import { React, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import getSessionID from '../../Action/ticket-actions';
+import API from '../../Service/API';
 import { Header } from '../Header/Header';
 import { Filter } from '../Filter/Filter';
 import { TabsAirLines } from '../TabsAirLines/TabsAirLines';
@@ -17,7 +18,15 @@ export const App = () => {
   // срабатывает когда меняется []...здесь ничего, срабатывает один раз на старте
   // получаю гостевую сессию и отправляю её в стор
   useEffect(() => dispatch(getSessionID()), []);
-
+  /*
+  useEffect(() => {
+    const load = async () => {
+      const data = await getTickets.getSearchId();
+      dispatch(fetchTickets());
+    };
+    load();
+  }, []);
+*/
   return (
     <div>
       <Header />
