@@ -5,7 +5,7 @@ import { TicketAirLines } from '../TicketAirLines/TicketAirLines';
 import { Button } from '../ButtonAdd/ButtonAdd';
 //сервисные элементы
 import { Loader } from '../Loader/Loader';
-import { Warning } from '../../Service/Warning/Warning';
+import { Warning } from '../Warning/Warning';
 
 export const ListTicketAirLines = () => {
   // получение состояний из reduce
