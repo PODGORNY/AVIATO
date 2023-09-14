@@ -2,8 +2,7 @@ import { React, useEffect } from 'react';
 // хук редуктора на получение ссылки на dispatch из стор
 import { useDispatch } from 'react-redux';
 
-import getSessionID from '../../Action/ticket-actions';
-import API from '../../Service/API';
+import getSessionID from '../../Reducer/ticketAPIReducer';
 import { Header } from '../Header/Header';
 import { Filter } from '../Filter/Filter';
 import { TabsAirLines } from '../TabsAirLines/TabsAirLines';

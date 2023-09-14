@@ -8,63 +8,35 @@ export const FETCH_TICKETS_SUCCESS = 'FETCH_TICKETS_SUCCESS';
 export const FETCH_TICKETS_FAILURE = 'FETCH_TICKETS_FAILURE';
 export const SET_STOP_FETCHING = 'SET_STOP_FETCHING';
 
-const url = 'https://aviasales-test-api.kata.academy';
+export const fetchSearchIDRequest = () => ({
+  type: FETCH_SEARCH_ID_REQUEST,
+});
 
-// получение гостевой сессии
-const getSessionID = () => {
-  return (dispatch) => {
-    dispatch({ type: FETCH_SEARCH_ID_REQUEST });
+export const fetchSearchIDSuccess = (success) => ({
+  type: FETCH_SEARCH_ID_SUCCESS,
+  payload: success,
+});
 
-    fetch(`${url}/search`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.status);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        const searchId = data.searchId;
-        dispatch({ type: FETCH_SEARCH_ID_SUCCESS, payload: searchId });
-        dispatch(fetchTickets(searchId));
-      })
-      .catch((error) => {
-        dispatch({ type: FETCH_SEARCH_ID_FAILURE, payload: error.message });
-      });
-  };
-};
+export const fetchSearchIDFailure = (failure) => ({
+  type: FETCH_TICKETS_FAILURE,
+  payload: failure,
+});
 
-// получение билетов с сервера
-export const fetchTickets = (searchId) => {
-  return (dispatch) => {
-    dispatch({ type: FETCH_TICKETS_REQUEST });
+export const fetchTicketsRequest = () => ({
+  type: FETCH_TICKETS_REQUEST,
+});
 
-    const fetchMoreTickets = () => {
-      fetch(`${url}/tickets?searchId=${searchId}`) // запрос на сервер
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(response.status);
-          }
-          return response.json(); // если сеть стабильна - пришёл объект с билетами
-        })
-        .then((data) => {
-          const tickets = data.tickets; // разложил билеты...распаковал массив
-          dispatch({ type: FETCH_TICKETS_SUCCESS, payload: tickets }); // отправил в store...reducer
+export const fetchTicketsSuccess = (success) => ({
+  type: FETCH_TICKETS_REQUEST,
+  payload: success,
+});
 
-          if (data.stop) {
-            dispatch({ type: SET_STOP_FETCHING, payload: data.stop });
-          } else fetchMoreTickets();
-        })
-        .catch((error) => {
-          if (error.message >= 500 && error.message < 600) {
-            fetchMoreTickets();
-          } else {
-            dispatch({ type: FETCH_TICKETS_FAILURE, payload: error.message });
-          }
-        });
-    };
+export const fetchTicketsFailure = (failure) => ({
+  type: FETCH_SEARCH_ID_FAILURE,
+  payload: failure,
+});
 
-    fetchMoreTickets();
-  };
-};
-
-export default getSessionID;
+export const setStopFetching = (stoped) => ({
+  type: SET_STOP_FETCHING,
+  payload: stoped,
+});

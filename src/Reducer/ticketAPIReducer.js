@@ -7,6 +7,7 @@ import {
   FETCH_TICKETS_FAILURE,
   SET_STOP_FETCHING,
 } from '../Action/ticket-actions';
+
 const initialState = {
   searchId: null,
   tickets: [],
@@ -42,3 +43,62 @@ export const ticketAPIReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+// получение гостевой сессии
+const getSessionID = () => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_SEARCH_ID_REQUEST });
+
+    fetch('https://aviasales-test-api.kata.academy/search')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.status);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const searchId = data.searchId;
+        dispatch({ type: FETCH_SEARCH_ID_SUCCESS, payload: searchId });
+        dispatch(fetchTickets(searchId));
+      })
+      .catch((error) => {
+        dispatch({ type: FETCH_SEARCH_ID_FAILURE, payload: error.message });
+      });
+  };
+};
+
+// получение билетов с сервера
+export const fetchTickets = (searchId) => {
+  return (dispatch) => {
+    dispatch({ type: FETCH_TICKETS_REQUEST });
+
+    const fetchMoreTickets = () => {
+      fetch(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`) // запрос на сервер
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.status);
+          }
+          return response.json(); // если сеть стабильна - пришёл объект с билетами
+        })
+        .then((data) => {
+          const tickets = data.tickets; // разложил билеты...распаковал массив
+          dispatch({ type: FETCH_TICKETS_SUCCESS, payload: tickets }); // отправил в store...reducer
+
+          if (data.stop) {
+            dispatch({ type: SET_STOP_FETCHING, payload: data.stop });
+          } else fetchMoreTickets();
+        })
+        .catch((error) => {
+          if (error.message >= 500 && error.message < 600) {
+            fetchMoreTickets();
+          } else {
+            dispatch({ type: FETCH_TICKETS_FAILURE, payload: error.message });
+          }
+        });
+    };
+
+    fetchMoreTickets();
+  };
+};
+
+export default getSessionID;
