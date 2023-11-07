@@ -19,6 +19,7 @@ const initialState = {
 
 export const ticketAPIReducer = (state = initialState, action) => {
   switch (action.type) {
+    // если входящий экшн совпадает по именам...он обновляет данные в стэйт...см выше и эти данные забираются в компоненты
     case FETCH_SEARCH_ID_REQUEST:
       return { ...state, loadingSearchId: true, error: null };
     case FETCH_SEARCH_ID_SUCCESS:

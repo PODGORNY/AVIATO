@@ -5,7 +5,7 @@ import { TicketBack } from '../TicketBack/TicketBack';
 
 import classes from './TicketAirLines.module.css';
 
-// данные из
+// данные из ListTicket
 export const TicketAirLines = ({
   priceValue,
   codeIATA,

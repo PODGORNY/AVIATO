@@ -96,6 +96,7 @@ export const ListTicketAirLines = () => {
 
     return (
       // выдать в рендер билет из массива...5 шт
+      // функции, передаются в компонент ниже
       <TicketAirLines
         priceValue={formatPrice(price)}
         codeIATA={carrier}

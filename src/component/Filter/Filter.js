@@ -14,7 +14,7 @@ export const Filter = () => {
 
   // отправка события(Action) в стор - чтобы указать редусу Что изменить
   const dispatch = useDispatch();
-  // получаю из reducera состояния фильтров
+  // 5 получаю обновлённые данные из reducera состояния фильтров---------------------------------------------5
   const filters = useSelector((state) => state.filterReducer.filters);
 
   // условия срабатывания фильтров
@@ -40,6 +40,9 @@ export const Filter = () => {
         dispatch(toggleFilter('all'));
       }
 
+      // ПРИНЦИП РАБОТЫ ОБМЕНА ДАННЫМИ...экшна, диспатча, записи в стэйт, и получения данных в компонентах
+      // 1 toggleFilter - это экшн...берёт filter и записывает его в свой payload + создаёт там ТИП...см сheckbox-action.js
+      // 2 dispatch берёт toggleFilter (внутри которого ТИП и payload)...и отправляет в редуктор(filterReducer)...там проверяется ТИП и меняются значения стэйта...см filterReducer
       dispatch(toggleFilter(filter));
     }
   };

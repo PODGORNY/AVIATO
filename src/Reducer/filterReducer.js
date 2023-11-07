@@ -12,9 +12,12 @@ const initialState = {
 
 export const filterReducer = (state = initialState, action) => {
   switch (action.type) {
+    // 3 экшн отправляемый из Filter.js, проверяется на ТИП и меняет стэйт filters...эти данные потом заберут комноненты через useSelector
+    // 4 [action.payload] - это значение filter...например oneStop
     case TOGGLE_FILTER:
       return {
         ...state,
+        // 4.1 захожу в state.filters...и меняю значение oneStop на true/false
         filters: { ...state.filters, [action.payload]: !state.filters[action.payload] },
       };
     case SET_ALL_FILTERS:

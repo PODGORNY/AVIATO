@@ -1,6 +1,7 @@
 import React from 'react';
 import './TicketIn.css';
 
+// функции вычисляют значения, те идут из ListTicket, пробрасываются через TicketAirlines и приходят сюда...значения времени например
 export const TicketIn = ({ originIn, destinationIn, durationIn, takeOffTimeIn, landingTameIn, stopsIn }) => {
   return (
     <div className="ticketIn">
